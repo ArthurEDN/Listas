@@ -1,11 +1,11 @@
-public class Duplamente{ //Duplamente encadeada
+public class DuplamenteEncadeada{ //Duplamente encadeada
 
     private No primeiro;
     private No ultimo;
     private int cont;
 
 
-    public ListaDinamica2() {
+    public DuplamenteEncadeada() {
         primeiro = null;
         ultimo = null;
         cont = 0;
