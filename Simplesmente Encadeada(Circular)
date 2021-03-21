@@ -127,7 +127,7 @@ public class SimplesEncadeada{ //Simplesmente encadeada
     public void exibir(){
        No aux = primeiro;
 
-       while(aux != null) {
+       while(aux != ultimo.proximo) {
            System.out.println(aux.dado + " ");
            aux = aux.proximo;                       //  Atualizando referencia para o proximo nó
        }
