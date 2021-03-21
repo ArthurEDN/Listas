@@ -21,11 +21,11 @@ public class DuplamenteEncadeada { //Duplamente encadeada e ordenada
             if (primeiro == null) {  //  Lista vazia?
                 primeiro = novo;
                 ultimo = novo;
-            } else if (novo.dado < primeiro.dado) {  //  Posição Inicial
+            } else if (novo.dado <= primeiro.dado) {  //  Posição Inicial
                 novo.proximo = primeiro;
                 primeiro.anterior = novo;
                 primeiro = novo;
-            } else if (novo.dado > ultimo.dado) {  // Posição Final
+            } else if (novo.dado => ultimo.dado) {  // Posição Final
                 ultimo.proximo = novo;
                 novo.anterior = ultimo;
                 ultimo = novo;
