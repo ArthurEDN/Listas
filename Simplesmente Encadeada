@@ -1,4 +1,4 @@
-public class ListaDinamica { //Simplesmente encadeada
+public class Simplesmente{ //Simplesmente encadeada
 
     private No primeiro;
     private No ultimo;
