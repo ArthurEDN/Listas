@@ -1,0 +1,140 @@
+public class ListaDinamica2 { //Duplamente encadeada
+
+    private No primeiro;
+    private No ultimo;
+    private int cont;
+
+
+    public ListaDinamica2() {
+        primeiro = null;
+        ultimo = null;
+        cont = 0;
+    }
+
+    public void adicionar(int valor){ //  add
+        No novo = new No(valor);
+
+        if(primeiro == null){  //  Lista vazia?
+            primeiro = novo;
+            ultimo = novo;
+        } else{
+            ultimo.proximo = novo;        //  Referenciando o novo nó no anterior
+            novo.anterior = ultimo;
+            ultimo = novo;
+        }
+
+        cont++;
+    }
+
+    public void adicionar(int posicao, int valor) throws Exception { //add
+        if(posicao < 0 || posicao > tamanho()) {
+            throw new Exception("Posição inválida");
+        } else {
+            No novo = new No(valor);
+
+            if (primeiro == null) {  //  Lista vazia?
+                primeiro = novo;
+                ultimo = novo;
+            } else if (posicao == 0) {  //  Posição Inicial
+                novo.proximo = primeiro;
+                primeiro.anterior = novo;
+                primeiro = novo;
+            } else if (posicao == tamanho()) {  // Posição Final
+                ultimo.proximo = novo;
+                novo.anterior = ultimo;
+                ultimo = novo;
+            } else {  //  Posições Intermediárias
+                No aux = primeiro;
+
+                for (int i = 0; i < posicao - 1; i++) {
+                    aux = aux.proximo;
+                }
+
+                novo.proximo = aux.proximo;
+                aux.proximo.anterior = novo;
+                aux.proximo = novo;
+                novo.anterior = aux;
+            }
+            cont++;
+        }
+    }
+
+    public void remover(int posicao) throws Exception { //  remove
+        if (primeiro == null || posicao < 0 || posicao > tamanho()) {
+            throw new Exception("Vetor vazio ou posição inválida");
+        } else {
+            if (posicao == 0) { // Posição inicial
+                primeiro = primeiro.proximo; //Referenciando o segundo nó
+            } else {
+                No aux = primeiro;
+
+                for(int i = 0; i < posicao -1; i++){
+                    aux = aux.proximo;
+                }
+                aux.proximo = aux.proximo.proximo; // Referenciando o valor de próximo do nó à frente
+
+                if(posicao == cont -1){
+                    ultimo = aux;
+                }
+            }
+            cont--;
+        }
+    }
+
+    public boolean pesquisar(int valor){ //  Contains
+        No aux = primeiro;
+
+        for(int i = 0;i < tamanho();i++){
+            if(valor == aux.dado){
+                return true;
+            } else {
+                aux = aux.proximo;
+            }
+        }
+        return false;
+    }
+
+    public int pesquisarIndice(int valor) { // indexOf
+        int i = 0;
+        No aux = primeiro;
+
+        while(aux != null){
+            if(valor == aux.dado){
+                return i;
+            }else{
+                aux = aux.proximo;
+                i++;
+            }
+        }
+        return -1;
+    }
+
+    public int pesquisarElemento(int posicao) throws Exception {  // Get
+        if(primeiro == null || posicao < 0 || posicao > tamanho()){
+            throw new Exception("Vetor vazio ou posição inválida");
+        } else {
+            No aux = primeiro;
+
+            for (int i = 0; i < posicao; i++) {
+                aux = aux.proximo;                        //  Percorrendo os nós e guardando as referencias
+            }
+
+            return aux.dado;
+        }
+    }
+
+    public int tamanho(){   //Size
+        return cont;
+    }
+
+    public void exibir(){
+        No aux = primeiro;
+
+        while(aux != null) {
+            System.out.println(aux.dado + " ");
+            aux = aux.proximo;                       //  Atualizando referencia para o proximo nó
+        }
+
+        System.out.println();
+    }
+}
