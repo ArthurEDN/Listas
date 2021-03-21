@@ -21,7 +21,7 @@ public class Duplamente { //Duplamente encadeada
             ultimo.proximo = novo;        //  Referenciando o novo nó no anterior
             novo.anterior = ultimo;
             ultimo = novo;
-            ultimo.proximo = primeiro;
+            ultimo.proximo = primeiro;   //   Referenciando o primeiro nó
         }
 
         cont++;
@@ -40,12 +40,12 @@ public class Duplamente { //Duplamente encadeada
                 novo.proximo = primeiro;
                 primeiro.anterior = novo;
                 primeiro = novo;
-                primeiro.anterior = ultimo;
+                primeiro.anterior = ultimo;  //   Referenciando o ultimo nó novamente
             } else if (posicao == tamanho()) {  // Posição Final
                 ultimo.proximo = novo;
                 novo.anterior = ultimo;
                 ultimo = novo;
-                ultimo.proximo = primeiro;
+                ultimo.proximo = primeiro;   //   Referenciando o primeiro nó 
             } else {  //  Posições Intermediárias
                 No aux = primeiro;
 
