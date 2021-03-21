@@ -1,11 +1,11 @@
-public class Simplesmente{ //Simplesmente encadeada
+public class SimplesmenteEncadeada{ //Simplesmente encadeada
 
     private No primeiro;
     private No ultimo;
     private int cont;
 
 
-    public ListaDinamica() {
+    public SimplesmenteEncadeada() {
         primeiro = null;
         ultimo = null;
         cont = 0;
