@@ -5,7 +5,7 @@ public class SimplesEncadeada{ //Simplesmente encadeada
     private int cont;
 
 
-    public ListaDinamica() {
+    public SimplesEncadeada() {
         primeiro = null;
         ultimo = null;
         cont = 0;
