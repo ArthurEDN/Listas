@@ -12,7 +12,7 @@ public class DuplamenteEncadeada { //Duplamente encadeada e ordenada
     }
 
 
-    public void adicionar(int valor) throws Exception { //add
+    public void adicionar(int posicao,int valor) throws Exception { //add
         if(posicao < 0 || posicao > tamanho()) {
             throw new Exception("Posição inválida");
         } else {
