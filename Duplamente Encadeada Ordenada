@@ -1,5 +1,4 @@
-public class DuplamenteEncadeada { //Duplamente encadeada e ordenada
-
+public class DuplamenteEncadeada { //Duplamente encadeada e Ordenada
     private No primeiro;
     private No ultimo;
     private int cont;
@@ -11,11 +10,8 @@ public class DuplamenteEncadeada { //Duplamente encadeada e ordenada
         cont = 0;
     }
 
+    public void adicionar(int valor) throws Exception { //add
 
-    public void adicionar(int posicao,int valor) throws Exception { //add
-        if(posicao < 0 || posicao > tamanho()) {
-            throw new Exception("Posição inválida");
-        } else {
             No novo = new No(valor);
 
             if (primeiro == null) {  //  Lista vazia?
@@ -25,7 +21,7 @@ public class DuplamenteEncadeada { //Duplamente encadeada e ordenada
                 novo.proximo = primeiro;
                 primeiro.anterior = novo;
                 primeiro = novo;
-            } else if (novo.dado => ultimo.dado) {  // Posição Final
+            } else if (novo.dado >= ultimo.dado) {  // Posição Final
                 ultimo.proximo = novo;
                 novo.anterior = ultimo;
                 ultimo = novo;
@@ -33,17 +29,16 @@ public class DuplamenteEncadeada { //Duplamente encadeada e ordenada
                 No aux = primeiro;
 
                 while(novo.dado >= aux.dado){
-                  aux = aux.proximo;
+                    aux = aux.proximo;
                 }
-              
-                novo.proximo = aux;
-                novo.anterior = aux.anterior;
+
+                novo.proximo = aux.proximo;
                 aux.proximo.anterior = novo;
-                aux.anterior = novo;
+                aux.proximo = novo;
+                novo.anterior = aux;
             }
             cont++;
         }
-    }
 
     public void remover(int posicao) throws Exception { //  remove
         if (primeiro == null || posicao < 0 || posicao > tamanho()) {
