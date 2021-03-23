@@ -1,4 +1,4 @@
-ublic class ListaEstatica {
+public class ListaEstatica {
     private Object v[];
     private int contador;
 
