@@ -1,0 +1,124 @@
+public class DuplamenteEncadeada { //Duplamente encadeada e Ordenada para Strings
+    private No primeiro;
+    private No ultimo;
+    private int cont;
+
+
+    public DuplamenteEncadeada() {
+        primeiro = null;
+        ultimo = null;
+        cont = 0;
+    }
+
+    public void adicionar(String valor) throws Exception { //add
+
+        No novo = new No(valor);
+
+        if (primeiro == null) {  //  Lista vazia?
+            primeiro = novo;
+            ultimo = novo;
+        } else if (novo.dado.compareTo(primeiro.dado) <= 0) {  //  Posição Inicial
+            novo.proximo = primeiro;
+            primeiro.anterior = novo;
+            primeiro = novo;
+        } else if (novo.dado.compareTo(ultimo.dado) >= 0) {  // Posição Final
+            ultimo.proximo = novo;
+            novo.anterior = ultimo;
+            ultimo = novo;
+        } else {  //  Posições Intermediárias
+            No aux = primeiro;
+
+            while(novo.dado.compareTo(aux.dado) > 0){
+                aux = aux.proximo;
+            }
+
+            novo.proximo = aux.proximo;
+            aux.proximo.anterior = novo;
+            aux.proximo = novo;
+            novo.anterior = aux;
+        }
+        cont++;
+    }
+
+    public void remover(int posicao) throws Exception { //  remove
+        if (primeiro == null || posicao < 0 || posicao > tamanho()) {
+            throw new Exception("Vetor vazio ou posição inválida");
+        } else {
+            if (posicao == 0) { // Posição inicial
+                primeiro = primeiro.proximo; //Referenciando o segundo nó
+            } else {
+                No aux = primeiro;
+
+                for(int i = 0; i < posicao -1; i++){
+                    aux = aux.proximo;
+                }
+                aux.proximo = aux.proximo.proximo; // Referenciando o valor de próximo do nó à frente
+
+                if(posicao == cont -1){
+                    ultimo = aux;
+                }
+            }
+            cont--;
+        }
+    }
+
+    public boolean pesquisar(String valor){ //  Contains
+        No aux = primeiro;
+
+        for(int i = 0;i < tamanho();i++){
+            if(valor.equals(aux.dado)){
+                return true;
+            } else {
+                aux = aux.proximo;
+            }
+        }
+        return false;
+    }
+
+    public int pesquisarIndice(String valor) { // indexOf
+        int i = 0;
+        No aux = primeiro;
+
+        while(aux != null){
+            if(valor.equals(aux.dado)){
+                return i;
+            }else{
+                aux = aux.proximo;
+                i++;
+            }
+        }
+        return -1;
+    }
+
+    public String pesquisarElemento(int posicao) throws Exception {  // Get
+        if(primeiro == null || posicao < 0 || posicao > tamanho()){
+            throw new Exception("Vetor vazio ou posição inválida");
+        } else {
+            No aux = primeiro;
+
+            for (int i = 0; i < posicao; i++) {
+                aux = aux.proximo;                        //  Percorrendo os nós e guardando as referencias
+            }
+
+            return aux.dado;
+        }
+    }
+
+    public int tamanho(){   //Size
+        return cont;
+    }
+
+    public void exibir(){
+        No aux = primeiro;
+
+        while(aux != null) {
+            System.out.println(aux.dado + " ");
+            aux = aux.proximo;                       //  Atualizando referencia para o proximo nó
+        }
+
+        System.out.println();
+    }
+}
+
+
+
