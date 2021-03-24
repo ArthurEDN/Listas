@@ -1,4 +1,4 @@
-public class DuplamenteEncadeada { //Duplamente encadeada e Ordenada
+public class DuplamenteEncadeada { //Duplamente encadeada e Ordenada para numeros
     private No primeiro;
     private No ultimo;
     private int cont;
