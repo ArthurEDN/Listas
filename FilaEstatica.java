@@ -1,4 +1,4 @@
-public class FilaEstatica { //Fila circular
+public class FilaEstatica {
     private Object v[];
     private int inicio;
     private int fim;
@@ -12,7 +12,7 @@ public class FilaEstatica { //Fila circular
     public FilaEstatica(int n){
         v = new Object[n];
         inicio = 0;
-        fim= 0;
+        fim= -1;
     }
 
     public void enQueue(Object valor) throws Exception { //add
@@ -72,17 +72,19 @@ public class FilaEstatica { //Fila circular
     }
 
     public void exibir(){
-        if(fim >= inicio) {
+        if(inicio < fim) {
             for (int i=inicio; i <= fim; i++) {
-                System.out.println(v[i] + " ");
+                System.out.print(v[i] + " ");
             }
         }else{
-            for (int i = inicio; i < v.length - 1; i++) {
-                System.out.printl(v[i] + " ");
-            }
+            if(fim != -1) {
+                for (int i= inicio; i < v.length; i++) {
+                    System.out.print(v[i] + " ");
+                }
 
-            for(int i = 0; i <= fim; i++){
-                System.out.printl(v[i] + " ");
+                for (int i=0; i <= fim; i++) {
+                    System.out.print(v[i] + " ");
+                }
             }
         }
         System.out.println();
