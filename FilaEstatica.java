@@ -78,11 +78,11 @@ public class FilaEstatica { //Fila circular
             }
         }else{
             for (int i = inicio; i < v.length - 1; i++) {
-                System.out.println(v[i] + " ");
+                System.out.printl(v[i] + " ");
             }
 
             for(int i = 0; i <= fim; i++){
-                System.out.println(v[i] + " ");
+                System.out.printl(v[i] + " ");
             }
         }
         System.out.println();
