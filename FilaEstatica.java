@@ -1,4 +1,4 @@
-public class FilaEstatica {
+public class FilaEstatica { //Fila Circular estática
     private Object v[];
     private int inicio;
     private int fim;
