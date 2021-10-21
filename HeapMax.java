@@ -43,7 +43,8 @@ public class HeapMax {
 
     private void descer(int indice) { // Compara os valores pais e filhos para trocar as posições caso necessário
         int indiceFilhoEsq, indiceFilhoDir, indiceMax, temp;
-
+        
+        //Fórmula alternativa, caso queira começar pelo indice 1 e não 0 = Direito (2 * indice + 1) e Esquerdo = (2 * indice)
         indiceFilhoEsq = 2 * indice + 1;
         indiceFilhoDir = 2 * indice + 2;
 
