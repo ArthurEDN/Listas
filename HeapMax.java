@@ -27,6 +27,8 @@ public class HeapMax {
     }
 
     private void subir(int indice) { // Compara os valores pais e filhos para trocar as posições caso necessário
+        
+        //Fórmula alternativa, caso queira começar pelo indice 1 e não 0 = Pai (indice / 2)
         int indicePai, temp;
 
         if (indice != 0) {
