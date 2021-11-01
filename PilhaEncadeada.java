@@ -25,7 +25,7 @@ public class PilhaEncadeada { //Simplesmente encadeada
         contador++;
     }
 
-    public void remover() throws Exception { //  remove
+    public void pop() throws Exception { //  remove
         if (primeiro == null) {
             throw new Exception("Vetor vazio ou posição inválida");
         } else {
@@ -40,7 +40,7 @@ public class PilhaEncadeada { //Simplesmente encadeada
         }
     }
 
-    public boolean search(Object valor){ //  Contains
+    public boolean contains(Object valor){ //  Contains
         No aux = primeiro;
 
         while(aux != null){
