@@ -14,33 +14,38 @@ public class PilhaEncadeada { //Simplesmente encadeada
     public void push(Object valor){ //  add
         No novo = new No(valor);
 
-        if(primeiro == null){  //  Lista vazia?
+        if(isEmpty()){  //  Lista vazia?
             primeiro = novo;
             ultimo = novo;
         } else{
             ultimo.proximo = novo;        //  Referenciando o novo nó no anterior
-            novo.anterior = ultimo;
             ultimo = novo;
         }
         contador++;
     }
 
     public void pop() throws Exception { //  remove
-        if (primeiro == null) {
+        if (isEmpty()) {
             throw new Exception("Vetor vazio ou posição inválida");
-        } else {
-            No aux=primeiro;
+        }else {
+            if(primeiro == ultimo){
+                clear();
+            } else {
+                No aux=primeiro;
 
-            while (aux.proximo.proximo != null) {
-                aux=aux.proximo;
+                while (aux.proximo != ultimo) {
+                    aux=aux.proximo;
+                }
+
+                aux.proximo=null;
+                ultimo=aux;
+
+                contador--;
             }
-
-            aux.proximo=null;
-            ultimo = aux;
         }
     }
 
-    public boolean contains(Object valor){ //  Contains
+    public boolean contains(Object valor){
         No aux = primeiro;
 
         while(aux != null){
@@ -54,10 +59,13 @@ public class PilhaEncadeada { //Simplesmente encadeada
     }
 
     public Object peek() {
+        if(isEmpty()){
+            return null;
+        }
         return ultimo.dado;
     }
 
-    public int size(){   //Size
+    public int size(){
         return contador;
     }
 
@@ -68,23 +76,28 @@ public class PilhaEncadeada { //Simplesmente encadeada
     }
 
     public boolean isEmpty() {
-        return contador == 0;
+        return primeiro == null;
     }
 
-    public void exibir(){
-        No aux = primeiro;
+    public void exibir() {
 
-        while(aux != null) {
-            System.out.println(aux.dado + " ");
-            aux = aux.proximo;                       //  Atualizando referencia para o proximo nó
+        if (isEmpty()) {
+            System.out.println("Pilha vazia");
+        } else {
+
+            No aux=primeiro;
+
+            while (aux != null) {
+                System.out.print(aux.dado + " ");
+                aux=aux.proximo;                       //  Atualizando referencia para o proximo nó
+            }
+
+            System.out.println();
         }
-
-        System.out.println();
     }
 }
 
-
-
+/*
 public class PilhaEncadeada { //Simplesmente encadeada e trabalhando com a extremidade do ínicio
 
     private No primeiro;
@@ -99,7 +112,7 @@ public class PilhaEncadeada { //Simplesmente encadeada e trabalhando com a extre
     public void push(Object valor){ //  add
         No novo = new No(valor);
 
-        if(primeiro == null){  //  Lista vazia?
+        if(isEmpty()){  //  Lista vazia?
             primeiro = novo;
         } else {
             novo.proximo = primeiro;
@@ -109,7 +122,7 @@ public class PilhaEncadeada { //Simplesmente encadeada e trabalhando com a extre
     }
 
     public void pop() throws Exception { //  remove
-        if (primeiro == null) {
+        if (isEmpty()) {
             throw new Exception("Vetor vazio ou posição inválida");
         }else{
             primeiro = primeiro.proximo;
@@ -117,7 +130,7 @@ public class PilhaEncadeada { //Simplesmente encadeada e trabalhando com a extre
         }
     }
 
-    public boolean contains(Object valor){ //  Contains
+    public boolean contains(Object valor){ 
         No aux = primeiro;
 
         while(aux != null){
@@ -137,7 +150,7 @@ public class PilhaEncadeada { //Simplesmente encadeada e trabalhando com a extre
         return primeiro.dado;
     }
 
-    public int size(){   //Size
+    public int size(){   
         return contador;
     }
 
@@ -167,3 +180,5 @@ public class PilhaEncadeada { //Simplesmente encadeada e trabalhando com a extre
         }
     }
 }
+
+ */
